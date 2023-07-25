@@ -1,6 +1,18 @@
 import { Link } from "react-router-dom";
 import logo from "../../../Images/logo1.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { toast } from "react-hot-toast";
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Successfully Logged OUT!");
+      })
+      .catch((error) => console.log(error));
+  };
   const navOption = (
     <>
       <li>
@@ -47,9 +59,19 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{navOption}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <a className="btn">Login</a>
-        </Link>
+        {user ? (
+          <>
+            <Link onClick={handleLogOut}>
+              <a className="btn">LogOut</a>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <a className="btn">Login</a>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

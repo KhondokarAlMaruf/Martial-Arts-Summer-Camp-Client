@@ -1,6 +1,26 @@
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const { createUser } = useContext(AuthContext);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      toast.success("  Registration Successfully !");
+    });
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -9,18 +29,21 @@ const Register = () => {
             <h1 className="text-5xl font-bold">Please Register now!</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
                 <input
                   name="name"
+                  {...register("name", { required: true })}
                   type="text"
                   placeholder="Name"
                   className="input input-bordered"
-                  required
                 />
+                {errors.name && (
+                  <span className="text-red-600">Name is required</span>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -28,11 +51,14 @@ const Register = () => {
                 </label>
                 <input
                   name="photo-url"
+                  {...register("photo", { required: true })}
                   type="text"
                   placeholder="photo url"
                   className="input input-bordered"
-                  required
                 />
+                {errors.photo && (
+                  <span className="text-red-600">Photo url is required</span>
+                )}
               </div>
 
               <div className="form-control">
@@ -41,11 +67,14 @@ const Register = () => {
                 </label>
                 <input
                   name="email"
+                  {...register("email", { required: true })}
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
-                  required
                 />
+                {errors.email && (
+                  <span className="text-red-600">Email is required</span>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -53,11 +82,21 @@ const Register = () => {
                 </label>
                 <input
                   name="password"
+                  {...register("password", {
+                    required: true,
+                    pattern: /^(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/,
+                  })}
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
-                  required
                 />
+
+                {errors.password?.type === "pattern" && (
+                  <p className="text-red-600">
+                    password must have 6 characters one Uppercase and one
+                    special characters
+                  </p>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -68,11 +107,11 @@ const Register = () => {
                   type="password"
                   placeholder="confirm-password"
                   className="input input-bordered"
-                  required
+                  // required
                 />
               </div>
               <div className="form-control mt-6">
-                <button className="btn ">Login</button>
+                <input className="btn " type="submit" value="Register" />
               </div>
 
               <Link className="btn btn-active btn-link" to={"/login"}>
