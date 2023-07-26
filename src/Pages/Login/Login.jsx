@@ -28,18 +28,36 @@ const Login = () => {
         console.log(error);
       });
   };
+
   const handleSignInGoogle = () => {
     signInWithGoogle(provider)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        toast.success("Successfully LogIn !!");
-        // navigate("/");
-        navigate(from, { replace: true });
+      .then((res) => {
+        fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+          .then((res) => res.json())
+          .then((token) => {
+            localStorage.setItem("accessToken", token.accessToken);
+            const user = {
+              name: res.user.displayName,
+              email: res.user.email,
+              role: "student",
+              photo: res?.user?.photoURL,
+            };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(user),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+                toast.success("Register successfully");
+                navigate("/dashboard");
+              });
+          });
       })
-      .catch((error) => {
-        console.log(error.message);
-      });
+      .catch((err) => toast.error(err));
   };
 
   return (

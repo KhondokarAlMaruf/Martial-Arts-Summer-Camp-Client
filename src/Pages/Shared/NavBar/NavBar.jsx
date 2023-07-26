@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../../Images/logo1.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
+
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const location = useLocation();
 
   const handleLogOut = () => {
     logOut()
@@ -81,6 +84,20 @@ const NavBar = () => {
               <a className="btn">Login</a>
             </Link>
           </>
+        )}
+      </div>
+
+      <div>
+        {(location.pathname === "/dashboard" ||
+          location.pathname.startsWith("/dashboard/")) && (
+          <div className="drawer-content block lg:hidden">
+            <label
+              htmlFor="dashboard-drawer"
+              className="btn btn-primary drawer-button"
+            >
+              <MdOutlineDashboardCustomize className="text-2xl text-white" />
+            </label>
+          </div>
         )}
       </div>
     </div>

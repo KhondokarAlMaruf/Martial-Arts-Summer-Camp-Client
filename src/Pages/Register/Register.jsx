@@ -49,8 +49,14 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          console.log(data);
-          //   Navigate("/");
+          fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.accessToken) {
+                localStorage.setItem("accessToken", data.accessToken);
+              }
+            });
+          navigate("/");
         }
       });
   };
