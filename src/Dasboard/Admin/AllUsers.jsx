@@ -15,9 +15,8 @@ const AllUsers = () => {
       return data;
     },
   });
-  console.log(allUser, refetch);
+  // console.log(allUser, refetch);
 
-  // Function to update the role for a single user in the backend
   const updateRoleInBackend = async (userId, role) => {
     console.log(userId, role);
     try {
@@ -29,8 +28,6 @@ const AllUsers = () => {
         },
         body: JSON.stringify({ role }),
       });
-
-      // After successful update, refetch the data to get updated roles
       refetch();
     } catch (error) {
       console.error("Error updating user role:", error);
@@ -71,6 +68,8 @@ const AllUsers = () => {
                       <GiTeacher />
                     </button>
                   </td>
+
+                  <td>{user?.role}</td>
                 </tr>
               ))}
             </tbody>

@@ -52,7 +52,7 @@ const Login = () => {
               .then((res) => res.json())
               .then((data) => {
                 console.log(data);
-                toast.success("Register successfully");
+                toast.success("login successfully");
                 navigate("/dashboard");
               });
           });

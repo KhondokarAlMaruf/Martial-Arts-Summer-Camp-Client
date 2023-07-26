@@ -3,11 +3,15 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useContext } from "react";
 import useAdmin from "../Hooks/useAdmin";
 import NavBar from "../Pages/Shared/NavBar/NavBar";
+import useInstructor from "../Hooks/useInstructor";
+import useStudent from "../Hooks/useStudent";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
 
   const [isAdmin] = useAdmin(user?.email);
+  const [isInstructor] = useInstructor(user?.email);
+  const [isStudent] = useStudent(user?.email);
 
   console.log(isAdmin);
 
@@ -59,6 +63,46 @@ const DashboardLayout = () => {
                       to="/dashboard/all-buyers"
                     >
                       All Instructors
+                    </Link>
+                  </li>
+                </>
+              )}
+              {isInstructor && (
+                <>
+                  <li>
+                    <Link
+                      className="btn btn-outline my-4"
+                      to="/dashboard/add-class"
+                    >
+                      Add Class
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="btn btn-outline my-4"
+                      to="/dashboard/my-class"
+                    >
+                      My Class
+                    </Link>
+                  </li>
+                </>
+              )}
+              {isStudent && (
+                <>
+                  <li>
+                    <Link
+                      className="btn btn-outline my-4"
+                      to="/dashboard/my-enrolled-class"
+                    >
+                      My Enrolled Class
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="btn btn-outline my-4"
+                      to="/dashboard/my-selected-class"
+                    >
+                      My Selected Class
                     </Link>
                   </li>
                 </>

@@ -156,7 +156,6 @@ const Register = () => {
                     className="select select-bordered"
                   >
                     <option value="student">Student</option>
-                    <option value="instructor">Instructor</option>
                   </select>
                 </div>
               </div>
