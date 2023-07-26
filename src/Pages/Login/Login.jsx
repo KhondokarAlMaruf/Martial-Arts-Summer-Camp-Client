@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import { toast } from "react-hot-toast";
@@ -10,6 +10,9 @@ const Login = () => {
   const provider = new GoogleAuthProvider();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
     signIn(data.email, data.password)
@@ -17,7 +20,8 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         toast.success("Successfully LogIn !!");
-        navigate("/");
+        // navigate("/");
+        navigate(from, { replace: true });
         data.reset();
       })
       .catch((error) => {
@@ -30,7 +34,8 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         toast.success("Successfully LogIn !!");
-        navigate("/");
+        // navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
