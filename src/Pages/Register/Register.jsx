@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
 
@@ -12,6 +12,7 @@ const Register = () => {
   } = useForm();
 
   const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -19,7 +20,39 @@ const Register = () => {
       const loggedUser = result.user;
       console.log(loggedUser);
       toast.success("  Registration Successfully !");
+      saveUserToDb(
+        data.name,
+        data.photo,
+        data.email,
+        data.password,
+        data.account
+      );
+      navigate("/");
     });
+  };
+  const saveUserToDb = (name, photo, email, password, account) => {
+    const user = {
+      name,
+      photo,
+      email,
+      password,
+      role: account,
+    };
+    console.log(user);
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          console.log(data);
+          //   Navigate("/");
+        }
+      });
   };
   return (
     <div>
@@ -109,6 +142,17 @@ const Register = () => {
                   className="input input-bordered"
                   // required
                 />
+              </div>
+              <div className="form-control w-full max-w-xs my-4">
+                <div className="input-group">
+                  <select
+                    {...register("account")}
+                    className="select select-bordered"
+                  >
+                    <option value="student">Student</option>
+                    <option value="instructor">Instructor</option>
+                  </select>
+                </div>
               </div>
               <div className="form-control mt-6">
                 <input className="btn " type="submit" value="Register" />

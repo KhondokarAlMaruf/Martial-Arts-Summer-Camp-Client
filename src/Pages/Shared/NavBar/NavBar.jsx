@@ -9,7 +9,7 @@ const NavBar = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        toast.success("Successfully Logged OUT!");
+        toast.success("Logged out !!");
       })
       .catch((error) => console.log(error));
   };
@@ -24,6 +24,16 @@ const NavBar = () => {
       <li>
         <Link to="/classes">Classes</Link>
       </li>
+      {user ? (
+        <>
+          {" "}
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
   return (
