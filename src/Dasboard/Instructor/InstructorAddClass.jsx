@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../providers/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const InstructorAddClass = () => {
   const { user } = useContext(AuthContext);
   console.log(user.email, user.displayName);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -13,6 +15,37 @@ const InstructorAddClass = () => {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    const classes = {
+      className: data.classname,
+      classImage: data.classimage,
+      instructorName: user.displayName,
+      instructorEmail: user.email,
+      seats: data.seats,
+      price: data.price,
+      status: "pending",
+      enrolledStudent: 0,
+    };
+    console.log(classes);
+    fetch("http://localhost:5000/classes", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(classes),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          fetch(`http://localhost:5000/jwt?email=${user.email}`)
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.accessToken) {
+                localStorage.setItem("accessToken", data.accessToken);
+              }
+            });
+          navigate("/dashboard/my-class");
+        }
+      });
   };
 
   return (
@@ -26,7 +59,7 @@ const InstructorAddClass = () => {
               </label>
               <input
                 name="classname"
-                {...register("class-name", { required: true })}
+                {...register("classname", { required: true })}
                 type="text"
                 placeholder="Class name"
                 className="input input-bordered"
@@ -52,8 +85,6 @@ const InstructorAddClass = () => {
               </label>
               <input
                 value={user.displayName}
-                name="instructorname"
-                {...register("instructorname", { required: true })}
                 type="text"
                 placeholder="Instructor name "
                 className="input input-bordered"
@@ -65,8 +96,6 @@ const InstructorAddClass = () => {
               </label>
               <input
                 value={user.email}
-                name="instructoremail"
-                {...register("instructoremail", { required: true })}
                 type="text"
                 placeholder="Instructor email "
                 className="input input-bordered"
