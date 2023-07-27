@@ -11,7 +11,7 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
@@ -20,13 +20,24 @@ const Register = () => {
       const loggedUser = result.user;
       console.log(loggedUser);
       toast.success("  Registration Successfully !");
-      saveUserToDb(
-        data.name,
-        data.photo,
-        data.email,
-        data.password,
-        data.account
-      );
+      const userInfo = {
+        displayName: data.name,
+      };
+
+      updateUser(userInfo)
+        .then(() => {
+          saveUserToDb(
+            data.name,
+            data.photo,
+            data.email,
+            data.password,
+            data.account
+          );
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+
       navigate("/");
     });
   };
