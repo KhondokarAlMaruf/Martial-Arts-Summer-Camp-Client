@@ -44,14 +44,6 @@ const DashboardLayout = () => {
                   <li>
                     <Link
                       className="btn btn-outline my-4"
-                      to="/dashboard/all-sellers"
-                    >
-                      All Students
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="btn btn-outline my-4"
                       to="/dashboard/all-users"
                     >
                       All Users
@@ -60,9 +52,9 @@ const DashboardLayout = () => {
                   <li>
                     <Link
                       className="btn btn-outline my-4"
-                      to="/dashboard/all-buyers"
+                      to="/dashboard/manage-classes"
                     >
-                      All Instructors
+                      Manage Classes
                     </Link>
                   </li>
                 </>
