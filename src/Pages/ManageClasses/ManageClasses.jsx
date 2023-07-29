@@ -1,4 +1,5 @@
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 
 const ManageClasses = () => {
   const { data: allClasses = [], refetch } = useQuery({
@@ -13,7 +14,24 @@ const ManageClasses = () => {
       return data;
     },
   });
-  console.log(allClasses);
+  // console.log(allClasses, refetch);
+
+  const updateStatusInBackend = async (userId, status) => {
+    try {
+      await fetch(`http://localhost:5000/status/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ status }),
+      });
+      refetch();
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -29,6 +47,8 @@ const ManageClasses = () => {
               <th>Available Seats</th>
               <th>Price</th>
               <th>Status</th>
+              <th>Action</th>
+              <th>FeedBack</th>
             </tr>
           </thead>
           <tbody>
@@ -50,8 +70,30 @@ const ManageClasses = () => {
                 <td className="text-right">{cls.seats}</td>
                 <td className="text-right">{cls.price}</td>
                 <td>{cls.status}</td>
-                <td>Approve</td>
-                <td>Deny</td>
+                {cls?.status === "approved" ? (
+                  <button disabled>Approve</button>
+                ) : (
+                  <button
+                    onClick={() => updateStatusInBackend(cls._id, "approved")}
+                  >
+                    Approve
+                  </button>
+                )}
+                {cls?.status === "denied" ? (
+                  <button disabled>Deny</button>
+                ) : (
+                  <button
+                    onClick={() => updateStatusInBackend(cls._id, "denied")}
+                  >
+                    Deny
+                  </button>
+                )}
+
+                <td>
+                  <Link to={`/dashboard/send-feedback/${cls._id}`}>
+                    Send Feedback
+                  </Link>
+                </td>
               </tr>
             ))}
           </tbody>

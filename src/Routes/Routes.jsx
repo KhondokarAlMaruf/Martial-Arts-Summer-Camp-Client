@@ -18,6 +18,7 @@ import StudentRoutes from "./StudentRoutes";
 import MyEnrolledClass from "../Dasboard/Student/MyEnrolledClass";
 import StudentMySelectedClass from "../Dasboard/Student/StudentMySelectedClass";
 import ManageClasses from "../Pages/ManageClasses/ManageClasses";
+import FeedbackArea from "../Pages/ManageClasses/FeedbackArea";
 
 export const router = createBrowserRouter([
   {
@@ -71,6 +72,16 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoutes>
             <ManageClasses></ManageClasses>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "/dashboard/send-feedback/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/classes/${params.id}`),
+        element: (
+          <AdminRoutes>
+            <FeedbackArea></FeedbackArea>
           </AdminRoutes>
         ),
       },
