@@ -2,7 +2,7 @@ import { toast } from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 const FeedbackArea = () => {
-  const classId = useLoaderData(); // Use classId instead of id
+  const classes = useLoaderData();
   const navigation = useNavigate();
 
   const handleFeedback = async (event) => {
@@ -10,18 +10,24 @@ const FeedbackArea = () => {
     const form = event.target;
     const feedback = form.feedback.value;
     try {
-      await fetch(`http://localhost:5000/send-feedback/${classId}`, {
-        method: "PUT", // Use PUT request to update the feedback
+      await fetch(`http://localhost:5000/classes/${classes._id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify({ feedback }),
-      });
-      toast.success("Feedback sent");
-      navigation("/dashboard/manage-classes");
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data.message);
+          if (data.message) {
+            toast.success("feedback send to the instructor");
+            navigation("/dashboard/manage-classes");
+          }
+        });
     } catch (error) {
-      console.error("Error sending feedback:", error);
+      console.error("Error updating feedback:", error);
     }
   };
   return (
