@@ -23,11 +23,12 @@ const ManageClasses = () => {
             <tr>
               <th>##</th>
               <th>Image</th>
-              <th>class Name</th>
+              <th>Class Name</th>
               <th>Instructor</th>
-              <th>email</th>
+              <th>Email</th>
               <th>Available Seats</th>
-              <th>price</th>
+              <th>Price</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
@@ -46,8 +47,11 @@ const ManageClasses = () => {
                 <td>{cls.className}</td>
                 <td>{cls.instructorName}</td>
                 <td>{cls.instructorEmail}</td>
-                <td>{cls.seats}</td>
-                <td>{cls.price}</td>
+                <td className="text-right">{cls.seats}</td>
+                <td className="text-right">{cls.price}</td>
+                <td>{cls.status}</td>
+                <td>Approve</td>
+                <td>Deny</td>
               </tr>
             ))}
           </tbody>
