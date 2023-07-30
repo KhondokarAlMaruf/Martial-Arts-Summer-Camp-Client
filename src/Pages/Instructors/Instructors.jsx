@@ -19,11 +19,13 @@ const Instructors = () => {
       });
   }, []);
 
+  console.log(instructors);
+
   return (
     <div>
       <h2>This is instructors</h2>
       <div className="grid grid-cols-3 gap-4">
-        {instructors.map((instructor) => (
+        {instructors?.map((instructor) => (
           <div key={instructor._id} className="p-4 border border-gray-300">
             <img
               src={instructor.photo}
