@@ -16,6 +16,8 @@ const NavBar = () => {
       })
       .catch((error) => console.log(error));
   };
+  console.log(user);
+
   const navOption = (
     <>
       <li>
@@ -29,7 +31,6 @@ const NavBar = () => {
       </li>
       {user ? (
         <>
-          {" "}
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
@@ -40,7 +41,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-black">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -74,6 +75,11 @@ const NavBar = () => {
       <div className="navbar-end">
         {user ? (
           <>
+            <img
+              className="w-12 rounded-full mr-5"
+              src={user.photoURL}
+              alt=""
+            />
             <Link className="btn" onClick={handleLogOut}>
               LogOut
             </Link>
