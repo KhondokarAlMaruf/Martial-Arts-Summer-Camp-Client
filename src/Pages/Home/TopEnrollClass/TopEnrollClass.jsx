@@ -18,7 +18,7 @@ const TopEnrollClass = () => {
 
   return (
     <div>
-      <h2 className="text-6xl text-center my-8 text-[#5c6465]">
+      <h2 className="text-6xl text-center my-16 text-[#5c6465]">
         Our Popular Classes
       </h2>
       <div className="grid  md:grid-cols-3 gap-4">

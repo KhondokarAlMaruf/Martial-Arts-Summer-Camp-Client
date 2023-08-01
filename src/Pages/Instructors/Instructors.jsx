@@ -23,17 +23,22 @@ const Instructors = () => {
 
   return (
     <div>
-      <h2>This is instructors</h2>
-      <div className="grid grid-cols-3 gap-4">
+      <h2 className="text-6xl text-center my-16 text-[#5c6465]">
+        Our Instructors
+      </h2>
+      <div className="grid md:grid-cols-3 gap-4">
         {instructors?.map((instructor) => (
-          <div key={instructor._id} className="p-4 border border-gray-300">
-            <img
-              src={instructor.photo}
-              alt={instructor.name}
-              className="w-32 h-32 rounded-full mx-auto mb-4"
-            />
-            <p className="text-lg font-bold">{instructor.name}</p>
-            <p className="text-gray-600">{instructor.email}</p>
+          <div
+            key={instructor._id}
+            className="card w-96 bg-base-100 shadow-xl mx-auto"
+          >
+            <figure>
+              <img src={instructor.photo} alt={instructor.name} />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">Instructor Name: {instructor.name}</h2>
+              <p>Email: {instructor.email}</p>
+            </div>
           </div>
         ))}
       </div>
