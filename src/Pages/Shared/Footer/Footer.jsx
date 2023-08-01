@@ -3,7 +3,7 @@ import logo from "../../../Images/logo1.png";
 const Footer = () => {
   return (
     <div>
-      <div className="footer p-10 bg-neutral text-neutral-content">
+      <div className="footer p-10 bg-[#6fd5de] text-black">
         <div>
           <img className="w-40" src={logo} alt="" />
           <p>
@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+      <footer className="footer footer-center p-4 bg-[#758283] text-white mb-10">
         <div>
           <p>Copyright © 2023 - All right reserved by Summer Camp School</p>
         </div>
