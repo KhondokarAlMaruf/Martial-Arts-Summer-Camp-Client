@@ -53,7 +53,7 @@ const Login = () => {
               .then((data) => {
                 console.log(data);
                 toast.success("login successfully");
-                navigate("/dashboard");
+                navigate("/");
               });
           });
       })

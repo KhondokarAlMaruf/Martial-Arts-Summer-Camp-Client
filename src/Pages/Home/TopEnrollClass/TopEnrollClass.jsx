@@ -11,23 +11,33 @@ const TopEnrollClass = () => {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <progress className="progress w-56"></progress>;
   }
 
-  //   console.log(topEnrolledClasses);
+  console.log(topEnrolledClasses);
 
   return (
     <div>
-      <h2>top enroll student</h2>
-      <div className="grid grid-cols-3 gap-4">
+      <h2 className="text-6xl text-center my-8 text-[#5c6465]">
+        Our Popular Classes
+      </h2>
+      <div className="grid  md:grid-cols-3 gap-4">
         {topEnrolledClasses.map((classs) => (
-          <div key={classs._id} className="p-4 border border-gray-300">
-            <h3>{classs.className}</h3>
-            <p>Instructor: {classs.instructorName}</p>
-            <p>Email: {classs.instructorEmail}</p>
-            <p>Seats: {classs.seats}</p>
-            <p>Price: {classs.price}</p>
-            <p>Enrolled Students: {classs.enrolledStudent}</p>
+          <div
+            key={classs._id}
+            className="card w-96 bg-base-100 shadow-xl mx-auto"
+          >
+            <figure>
+              <img src={classs.classImage} alt="" />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">Class Name: {classs.className}</h2>
+              <p>Instructor: {classs.instructorName}</p>
+              <p>Email: {classs.instructorEmail}</p>
+              <p>Seats: {classs.seats}</p>
+              <p>Price: {classs.price}</p>
+              <p>Enrolled Students: {classs.enrolledStudent}</p>
+            </div>
           </div>
         ))}
       </div>

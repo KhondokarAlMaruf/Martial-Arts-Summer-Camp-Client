@@ -16,7 +16,6 @@ const NavBar = () => {
       })
       .catch((error) => console.log(error));
   };
-  // console.log(user);
 
   const navOption = (
     <>
@@ -41,7 +40,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar bg-[#51E1ED]">
+    <div className="navbar bg-[#CAD5E2]">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
