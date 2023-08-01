@@ -19,7 +19,7 @@ const TopInstructors = () => {
       });
   }, []);
 
-  console.log(instructors);
+  // console.log(instructors);
 
   return (
     <div>

@@ -70,28 +70,41 @@ const Classes = () => {
         toast.error(error.message);
       });
   };
+  console.log(approvedClasses);
   return (
     <div>
-      <h2>Approved Classes</h2>
-      <div className="grid grid-cols-3 gap-4">
+      <h2 className="text-6xl text-center my-16 text-[#5c6465]">Our Classes</h2>
+      <div className="grid md:grid-cols-3 gap-4">
         {approvedClasses?.map((classs) => (
-          <div key={classs._id} className="p-4 border border-gray-300">
-            <h3>{classs.className}</h3>
-            <p>Instructor: {classs.instructorName}</p>
-            <p>Email: {classs.instructorEmail}</p>
-            <p>seats: {classs.seats}</p>
-            <p>price: {classs.price}</p>
-            <p>status: {classs.status}</p>
-            <p>enrolledStudent: {classs.enrolledStudent}</p>
+          <div
+            key={classs._id}
+            className="card w-96 bg-base-100 shadow-xl mx-auto "
+          >
+            <figure>
+              <img src={classs.classImage} alt="Shoes" />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">Class Name: {classs.className}</h2>
+              <p>Instructor: {classs.instructorName}</p>
+              <p>Available seats: {classs.seats}</p>
+              <p>Price: {classs.price}</p>
+              <p>Status: {classs.status}</p>
+              <p>EnrolledStudent: {classs.enrolledStudent}</p>
+            </div>
+
             {user?.email ? (
-              <button
-                onClick={() => handleBookClass(classs)}
-                className="btn btn-primary"
-              >
-                Book Now
-              </button>
+              <div className="card-actions justify-end mr-5 mb-5">
+                <button
+                  onClick={() => handleBookClass(classs)}
+                  className="btn btn-primary"
+                >
+                  Book Now
+                </button>
+              </div>
             ) : (
-              <Link to="/login">Login to Admin/Istructor</Link>
+              <Link className="mb-5 ml-5" to="/login">
+                Login to Admin/Istructor
+              </Link>
             )}
           </div>
         ))}
