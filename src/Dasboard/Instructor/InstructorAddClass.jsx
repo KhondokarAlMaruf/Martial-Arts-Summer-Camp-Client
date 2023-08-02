@@ -50,7 +50,8 @@ const InstructorAddClass = () => {
 
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
+      <h2 className="text-5xl text-center mb-7 text-[#5c6465]">Add Class</h2>
+      <div className="hero min-h-screen bg-base-200 py-8">
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">

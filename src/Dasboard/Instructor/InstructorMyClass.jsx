@@ -31,9 +31,20 @@ const InstructorMyClass = () => {
     return <div>Loading...</div>;
   }
 
-  if (isLoading) {
-    return <h2>loading</h2>;
+  if (!myClass || myClass.length === 0) {
+    return (
+      <div>
+        <h2 className="text-center text-4xl">
+          No classes added by this instructor.
+        </h2>
+      </div>
+    );
   }
+
+  if (!myClass[0].feedback) {
+    myClass[0].feedback = [];
+  }
+
   console.log(myClass[0].feedback[0]);
   return (
     <div>
@@ -41,26 +52,29 @@ const InstructorMyClass = () => {
         <div>No classes added by this instructor.</div>
       ) : (
         <div>
-          <h2>My Class</h2>
-          <div className="grid grid-cols-3 gap-4">
+          <h2 className="text-5xl text-center mb-7 text-[#5c6465]">My Class</h2>
+          <div className="grid md:grid-cols-2 gap-4">
             {myClass?.map((classs) => (
-              <div key={classs._id} className="p-4 border border-gray-300">
-                <img
-                  src={classs.classImage}
-                  alt={classs.className}
-                  className="w-32 h-32 rounded-full mx-auto mb-4"
-                />
-                <p className="text-lg font-bold">{classs.className}</p>
-                <p className="text-gray-600">{classs.instructorName}</p>
-                <p className="text-gray-600">{classs.instructorEmail}</p>
-                <p className="text-gray-600">{classs.seats}</p>
-                <p className="text-gray-600">{classs.price}</p>
-                <p className="text-gray-600">{classs.status}</p>
-                <p className="text-gray-600">{classs.enrolledStudent}</p>
-                <div>
-                  {classs.feedback?.map((feedback, index) => (
-                    <p key={index}>Feedback: {feedback}</p>
-                  ))}
+              <div
+                key={classs._id}
+                className="card w-96 bg-base-100 shadow-xl mx-auto"
+              >
+                <figure>
+                  <img src={classs.classImage} alt={classs.className} />
+                </figure>
+                <div className="card-body">
+                  <h2 className="card-title">Class Name: {classs.className}</h2>
+                  <p>Instructor Name: {classs.instructorName}</p>
+                  <p>Email: {classs.instructorEmail}</p>
+                  <p>Available Seats: {classs.seats}</p>
+                  <p>Price: ${classs.price}</p>
+                  <p>Status: {classs.status}</p>
+                  <p>Enrolled Students: {classs.enrolledStudent}</p>
+                  <div>
+                    {classs.feedback?.map((feedback, index) => (
+                      <p key={index}>Feedback: {feedback}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -72,3 +86,15 @@ const InstructorMyClass = () => {
 };
 
 export default InstructorMyClass;
+<div className="card w-96 bg-base-100 shadow-xl">
+  <figure>
+    <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
+  </figure>
+  <div className="card-body">
+    <h2 className="card-title">Shoes!</h2>
+    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <div className="card-actions justify-end">
+      <button className="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div>;

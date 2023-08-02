@@ -148,7 +148,7 @@ const Register = () => {
                   </p>
                 )}
               </div>
-              <div className="form-control">
+              {/* <div className="form-control">
                 <label className="label">
                   <span className="label-text">Confirm Password</span>
                 </label>
@@ -159,7 +159,7 @@ const Register = () => {
                   className="input input-bordered"
                   // required
                 />
-              </div>
+              </div> */}
               <div className="form-control w-full max-w-xs my-4">
                 <div className="input-group">
                   <select
