@@ -34,7 +34,11 @@ const ManageClasses = () => {
 
   return (
     <div>
-      <div className="overflow-x-auto">
+      <h3 className="text-5xl text-center mb-7 text-[#5c6465]">
+        Manage Classes
+      </h3>
+
+      <div className="overflow-x-auto  bg-slate-100">
         <table className="table">
           {/* head */}
           <thead>
@@ -46,7 +50,7 @@ const ManageClasses = () => {
               <th>Email</th>
               <th>Available Seats</th>
               <th>Price</th>
-              <th>Status</th>
+              <th className="bg-red-100">Status</th>
               <th>Action</th>
               <th>FeedBack</th>
             </tr>
@@ -69,11 +73,12 @@ const ManageClasses = () => {
                 <td>{cls.instructorEmail}</td>
                 <td className="text-right">{cls.seats}</td>
                 <td className="text-right">{cls.price}</td>
-                <td>{cls.status}</td>
+                <td className="bg-red-100">{cls.status}</td>
                 {cls?.status === "approved" ? (
                   <button disabled>Approve</button>
                 ) : (
                   <button
+                    className="bg-green-400 p-1 m-1 rounded"
                     onClick={() => updateStatusInBackend(cls._id, "approved")}
                   >
                     Approve
@@ -83,6 +88,7 @@ const ManageClasses = () => {
                   <button disabled>Deny</button>
                 ) : (
                   <button
+                    className="bg-green-400 p-1 m-1 rounded"
                     onClick={() => updateStatusInBackend(cls._id, "denied")}
                   >
                     Deny

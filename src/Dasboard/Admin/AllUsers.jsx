@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
-import { FaUserSecret } from "react-icons/fa";
-import { GiTeacher } from "react-icons/gi";
+import { IoIosMan } from "react-icons/io";
+import { GrUserAdmin } from "react-icons/gr";
 
 const AllUsers = () => {
   const { data: allUser = [], refetch } = useQuery({
@@ -37,17 +37,17 @@ const AllUsers = () => {
   return (
     <div>
       <div className="card shadow-2xl p-8 m-4 w-full">
-        <h3 className="text-2xl mb-4">All Users</h3>
-        <div className="overflow-x-auto">
+        <h3 className="text-5xl text-center mb-7 text-[#5c6465]">All Users</h3>
+        <div className="overflow-x-auto bg-slate-100">
           <table className="table w-full">
             <thead>
-              <tr>
-                <th>Serial Number</th>
-                <th>Buyer Name</th>
+              <tr className="font-bold text-black">
+                <th>Serial</th>
+                <th>Name</th>
                 <th>Email</th>
                 <th>Make Admin</th>
                 <th>Make Instructor</th>
-                <th>Role</th>
+                <th className="bg-red-100">Role</th>
               </tr>
             </thead>
             <tbody>
@@ -58,18 +58,18 @@ const AllUsers = () => {
                   <td>{user?.email}</td>
                   <td onClick={() => updateRoleInBackend(user._id, "admin")}>
                     <button>
-                      <FaUserSecret />
+                      <GrUserAdmin className="text-3xl" />
                     </button>
                   </td>
                   <td
                     onClick={() => updateRoleInBackend(user._id, "instructor")}
                   >
                     <button>
-                      <GiTeacher />
+                      <IoIosMan className="text-3xl " />
                     </button>
                   </td>
 
-                  <td>{user?.role}</td>
+                  <td className="bg-red-100">{user?.role}</td>
                 </tr>
               ))}
             </tbody>
