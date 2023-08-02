@@ -1,9 +1,9 @@
-import img from "../../src/Images/404 Not Found.jpg";
+import img from "../../src/Images/slider2.jpg";
 
 const Dashboard = () => {
   return (
-    <div className="mx-auto">
-      <h2 className="text-4xl font-bold text-primary text-center my-4">
+    <div className="mx-auto bg-slate-200 py-10">
+      <h2 className="text-5xl text-center my-5 text-[#5c6465]  md:6xl">
         Welcome to My Dashboard
       </h2>
       <figure>

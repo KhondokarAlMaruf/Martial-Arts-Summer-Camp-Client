@@ -105,7 +105,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/my-enrolled-class",
         element: (
           <StudentRoutes>
-            <MyEnrolledClass></MyEnrolledClass>
+            <StudentMySelectedClass></StudentMySelectedClass>
           </StudentRoutes>
         ),
       },
@@ -113,7 +113,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/my-selected-class",
         element: (
           <StudentRoutes>
-            <StudentMySelectedClass></StudentMySelectedClass>
+            <MyEnrolledClass></MyEnrolledClass>
           </StudentRoutes>
         ),
       },

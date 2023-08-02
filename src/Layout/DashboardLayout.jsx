@@ -84,17 +84,17 @@ const DashboardLayout = () => {
                   <li>
                     <Link
                       className="btn btn-outline my-4"
-                      to="/dashboard/my-enrolled-class"
+                      to="/dashboard/my-selected-class"
                     >
-                      My Enrolled Class
+                      My Selected Class
                     </Link>
                   </li>
                   <li>
                     <Link
                       className="btn btn-outline my-4"
-                      to="/dashboard/my-selected-class"
+                      to="/dashboard/my-enrolled-class"
                     >
-                      My Selected Class
+                      My Enrolled Class
                     </Link>
                   </li>
                 </>

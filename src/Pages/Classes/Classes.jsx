@@ -63,14 +63,14 @@ const Classes = () => {
       .then((data) => {
         console.log(data);
         toast.success("Class booked Successfully");
-        navigation("/dashboard/my-enrolled-class");
+        navigation("/dashboard/my-selected-class");
       })
       .catch((error) => {
         console.error("Error booking class:", error.message);
         toast.error(error.message);
       });
   };
-  console.log(approvedClasses);
+  // console.log(approvedClasses);
   return (
     <div>
       <h2 className="text-6xl text-center my-16 text-[#5c6465]">Our Classes</h2>
@@ -96,7 +96,7 @@ const Classes = () => {
               <div className="card-actions justify-end mr-5 mb-5">
                 <button
                   onClick={() => handleBookClass(classs)}
-                  className="btn btn-primary"
+                  className="btn bg-[#CAD5E2]"
                 >
                   Book Now
                 </button>
