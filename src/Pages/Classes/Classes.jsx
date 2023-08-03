@@ -78,7 +78,7 @@ const Classes = () => {
         {approvedClasses?.map((classs) => (
           <div
             key={classs._id}
-            className="card w-96 bg-base-100 shadow-xl mx-auto "
+            className="card w-96 h-fit bg-base-100 shadow-xl mx-auto "
           >
             <figure>
               <img src={classs.classImage} alt="Shoes" />

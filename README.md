@@ -1,8 +1,23 @@
-# React + Vite
+# Project Name : Martial Arts Summer Camp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+LIVE WEBSITE LINK [Martial Arts Summer Camp]().
 
-Currently, two official plugins are available:
+## About This Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- This Project is Mainly for a summer camp school that allows students to enroll and learn specific extra-curricular activities.
+
+## Main Feature Of This Website
+
+- Applied User Authentication.
+
+- Websites have 3 roles - Admin, Instructor, and Student.
+
+- Admin can interact with All Instructor and Student.
+
+- Instructors can upload classes.
+
+- Students can enrolled classes.
+
+### Technology Used:
+
+HTML, CSS, Tailwind, React JS, Node JS, MongoDB, Firebase.

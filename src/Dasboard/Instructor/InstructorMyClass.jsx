@@ -54,10 +54,10 @@ const InstructorMyClass = () => {
         <div>
           <h2 className="text-5xl text-center mb-7 text-[#5c6465]">My Class</h2>
           <div className="grid md:grid-cols-2 gap-4">
-            {myClass?.map((classs) => (
+            {myClass.map((classs) => (
               <div
                 key={classs._id}
-                className="card w-96 bg-base-100 shadow-xl mx-auto"
+                className="card w-96 h-auto bg-base-100 shadow-xl mx-auto"
               >
                 <figure>
                   <img src={classs.classImage} alt={classs.className} />
@@ -86,7 +86,8 @@ const InstructorMyClass = () => {
 };
 
 export default InstructorMyClass;
-<div className="card w-96 bg-base-100 shadow-xl">
+{
+  /* <div className="card w-96 bg-base-100 shadow-xl">
   <figure>
     <img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" />
   </figure>
@@ -97,4 +98,5 @@ export default InstructorMyClass;
       <button className="btn btn-primary">Buy Now</button>
     </div>
   </div>
-</div>;
+</div>; */
+}

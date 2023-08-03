@@ -1,6 +1,6 @@
 import banner from "../../../Images/banner.jpg";
 import banner1 from "../../../Images/slider1.jpg";
-import banner2 from "../../../Images/slider.jpg";
+import banner2 from "../../../Images/slider3.jpg";
 const Banner = () => {
   return (
     <div className="carousel w-full">

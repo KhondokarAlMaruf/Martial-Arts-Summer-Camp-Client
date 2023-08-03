@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useQuery } from "react-query";
 import { AuthContext } from "../../providers/AuthProvider";
 import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const MyEnrolledClass = () => {
   const { user } = useContext(AuthContext);
@@ -79,7 +80,9 @@ const MyEnrolledClass = () => {
                 >
                   Delete
                 </button>
-                <button className="btn btn-primary">Pay</button>
+                <Link to="/dashboard/my-enrolled-class">
+                  <button className="btn btn-primary">Pay</button>
+                </Link>
               </div>
             </div>
           </div>

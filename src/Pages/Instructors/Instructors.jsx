@@ -30,7 +30,7 @@ const Instructors = () => {
         {instructors?.map((instructor) => (
           <div
             key={instructor._id}
-            className="card w-96 bg-base-100 shadow-xl mx-auto"
+            className="card w-96 h-96 bg-base-100 shadow-xl mx-auto"
           >
             <figure>
               <img src={instructor.photo} alt={instructor.name} />
