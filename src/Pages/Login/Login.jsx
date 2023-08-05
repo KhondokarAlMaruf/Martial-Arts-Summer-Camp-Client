@@ -20,9 +20,12 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         toast.success("Successfully LogIn !!");
-        fetch(`http://localhost:5000/jwt?email=${data.email}`)
+        fetch(
+          `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/jwt?email=${data.email}`
+        )
           .then((res) => res.json())
           .then((data) => {
+            console.log(data);
             if (data.accessToken) {
               localStorage.setItem("accessToken", data.accessToken);
               navigate(from, { replace: true });
