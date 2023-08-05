@@ -7,7 +7,9 @@ const InstructorMyClass = () => {
   const fetchMyClasses = async (email) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/single-class?email=${encodeURIComponent(email)}`,
+        `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/single-class?email=${encodeURIComponent(
+          email
+        )}`,
         {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,

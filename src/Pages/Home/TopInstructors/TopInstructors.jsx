@@ -5,11 +5,14 @@ const TopInstructors = () => {
 
   useEffect(() => {
     //  "instructor" from the backend
-    fetch("http://localhost:5000/users/role?role=instructor", {
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      "https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/users/role?role=instructor",
+      {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setInstructors(data);

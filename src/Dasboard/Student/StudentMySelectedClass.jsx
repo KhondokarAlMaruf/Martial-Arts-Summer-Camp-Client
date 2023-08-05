@@ -11,7 +11,7 @@ const StudentMySelectedClass = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/book-class?email=${user?.email}`,
+          `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/book-class?email=${user?.email}`,
           {
             headers: {
               authorization: `bearer ${localStorage.getItem("accessToken")}`,

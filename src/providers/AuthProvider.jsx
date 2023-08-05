@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
 
   const logOut = () => {
     setLoading(true);
-
+    localStorage.removeItem("verifyJWT");
     return signOut(auth);
   };
   const updateUser = (userInfo) => {

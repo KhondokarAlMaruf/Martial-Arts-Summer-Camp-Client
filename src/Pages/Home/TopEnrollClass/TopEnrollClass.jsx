@@ -4,7 +4,9 @@ const TopEnrollClass = () => {
   const { data: topEnrolledClasses, isLoading } = useQuery(
     "topEnrolledClasses",
     async () => {
-      const res = await fetch("http://localhost:5000/top-enroll-class");
+      const res = await fetch(
+        "https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/top-enroll-class"
+      );
       const data = await res.json();
       return data;
     }

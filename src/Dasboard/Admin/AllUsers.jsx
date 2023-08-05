@@ -6,11 +6,14 @@ const AllUsers = () => {
   const { data: allUser = [], refetch } = useQuery({
     queryKey: ["allUser"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/users`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const res = await fetch(
+        `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/users`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
       const data = await res.json();
       return data;
     },
@@ -20,14 +23,17 @@ const AllUsers = () => {
   const updateRoleInBackend = async (userId, role) => {
     console.log(userId, role);
     try {
-      await fetch(`http://localhost:5000/users/role/${userId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({ role }),
-      });
+      await fetch(
+        `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/users/role/${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify({ role }),
+        }
+      );
       refetch();
     } catch (error) {
       console.error("Error updating user role:", error);

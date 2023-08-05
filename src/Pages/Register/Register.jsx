@@ -50,17 +50,22 @@ const Register = () => {
       role: account,
     };
     console.log(user);
-    fetch("http://localhost:5000/users", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
+    fetch(
+      "https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/users",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          fetch(`http://localhost:5000/jwt?email=${email}`)
+          fetch(
+            `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/jwt?email=${email}`
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data.accessToken) {

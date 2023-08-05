@@ -5,11 +5,14 @@ const ManageClasses = () => {
   const { data: allClasses = [], refetch } = useQuery({
     queryKey: ["allClasses"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/classes`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const res = await fetch(
+        `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/classes`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
       const data = await res.json();
       return data;
     },
@@ -18,14 +21,17 @@ const ManageClasses = () => {
 
   const updateStatusInBackend = async (userId, status) => {
     try {
-      await fetch(`http://localhost:5000/status/${userId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({ status }),
-      });
+      await fetch(
+        `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/status/${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify({ status }),
+        }
+      );
       refetch();
     } catch (error) {
       console.error("Error updating status:", error);

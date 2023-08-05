@@ -20,6 +20,14 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         toast.success("Successfully LogIn !!");
+        fetch(`http://localhost:5000/jwt?email=${data.email}`)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.accessToken) {
+              localStorage.setItem("accessToken", data.accessToken);
+            }
+          });
+
         // navigate("/");
         navigate(from, { replace: true });
         data.reset();
@@ -32,7 +40,9 @@ const Login = () => {
   const handleSignInGoogle = () => {
     signInWithGoogle(provider)
       .then((res) => {
-        fetch(`http://localhost:5000/jwt?email=${res.user.email}`)
+        fetch(
+          `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/jwt?email=${res.user.email}`
+        )
           .then((res) => res.json())
           .then((token) => {
             localStorage.setItem("accessToken", token.accessToken);
@@ -42,13 +52,16 @@ const Login = () => {
               role: "student",
               photo: res?.user?.photoURL,
             };
-            fetch("http://localhost:5000/users", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(user),
-            })
+            fetch(
+              "https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/users",
+              {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify(user),
+              }
+            )
               .then((res) => res.json())
               .then((data) => {
                 console.log(data);

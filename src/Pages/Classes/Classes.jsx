@@ -10,7 +10,9 @@ const Classes = () => {
   const { data: approvedAllClasses, isLoading } = useQuery(
     "approvedClasses",
     async () => {
-      const res = await fetch("http://localhost:5000/classes");
+      const res = await fetch(
+        "https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/classes"
+      );
       const data = await res.json();
       return data;
     }
@@ -46,13 +48,16 @@ const Classes = () => {
       status: classs.status,
     };
     console.log(bookClass);
-    fetch("http://localhost:5000/book-class", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(bookClass),
-    })
+    fetch(
+      "https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/book-class",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(bookClass),
+      }
+    )
       .then((res) => {
         if (res.ok) {
           return res.json();

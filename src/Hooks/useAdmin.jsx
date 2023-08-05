@@ -5,11 +5,14 @@ const useAdmin = (email) => {
   const [adminLoading, setAdminLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/admin?email=${email}`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/admin?email=${email}`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setIsAdmin(data.isAdmin);

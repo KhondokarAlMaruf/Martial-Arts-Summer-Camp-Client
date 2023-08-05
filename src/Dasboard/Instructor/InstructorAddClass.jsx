@@ -26,17 +26,22 @@ const InstructorAddClass = () => {
       enrolledStudent: 0,
     };
     console.log(classes);
-    fetch("http://localhost:5000/classes", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(classes),
-    })
+    fetch(
+      "https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/classes",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(classes),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
-          fetch(`http://localhost:5000/jwt?email=${user.email}`)
+          fetch(
+            `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/jwt?email=${user.email}`
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data.accessToken) {

@@ -5,11 +5,14 @@ const useStudent = (email) => {
   const [studentLoading, setStudentLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/student?email=${email}`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/student?email=${email}`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setStudent(data.isStudent);

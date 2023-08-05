@@ -16,7 +16,7 @@ const MyEnrolledClass = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/book-class?email=${user?.email}`,
+          `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/book-class?email=${user?.email}`,
           {
             headers: {
               authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -39,9 +39,12 @@ const MyEnrolledClass = () => {
 
   const handleDeleteClass = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/delete-class/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/delete-class/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {

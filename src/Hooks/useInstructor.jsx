@@ -5,11 +5,14 @@ const useInstructor = (email) => {
   const [instructorLoading, setInstructorLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/instructor?email=${email}`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/instructor?email=${email}`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setIsInstructor(data.isInstructor);

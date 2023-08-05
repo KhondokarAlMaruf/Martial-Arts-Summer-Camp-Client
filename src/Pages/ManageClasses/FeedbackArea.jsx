@@ -10,14 +10,17 @@ const FeedbackArea = () => {
     const form = event.target;
     const feedback = form.feedback.value;
     try {
-      await fetch(`http://localhost:5000/classes/${classes._id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify({ feedback }),
-      })
+      await fetch(
+        `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/classes/${classes._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify({ feedback }),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data.message);

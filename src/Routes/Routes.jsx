@@ -78,7 +78,9 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/send-feedback/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/classes/${params.id}`),
+          fetch(
+            `https://martial-arts-summer-camp-server-khondokaralmaruf.vercel.app/classes/${params.id}`
+          ),
         element: (
           <AdminRoutes>
             <FeedbackArea></FeedbackArea>
