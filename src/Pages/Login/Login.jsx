@@ -25,12 +25,12 @@ const Login = () => {
           .then((data) => {
             if (data.accessToken) {
               localStorage.setItem("accessToken", data.accessToken);
+              navigate(from, { replace: true });
+              data.reset();
             }
           });
 
         // navigate("/");
-        navigate(from, { replace: true });
-        data.reset();
       })
       .catch((error) => {
         console.log(error);
