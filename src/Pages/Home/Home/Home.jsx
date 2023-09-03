@@ -1,6 +1,7 @@
 import ExtraCuricilam from "../../ExtraCuriculam/ExtraCuricilam";
 import HappyStudents from "../../HappyStudents/HappyStudents";
 import MostPopular from "../../MostPopular/MostPopular";
+import Partners from "../../Partners/Partners";
 import VisitSchool from "../../VisitSchool/VisitSchool";
 import Banner from "../Banner/Banner";
 import TopEnrollClass from "../TopEnrollClass/TopEnrollClass";
@@ -16,8 +17,9 @@ const Home = () => {
       <VisitSchool></VisitSchool>
       <MostPopular></MostPopular>
       <WhyAdmit></WhyAdmit>
-      <ExtraCuricilam>S</ExtraCuricilam>
+      <ExtraCuricilam></ExtraCuricilam>
       <HappyStudents></HappyStudents>
+      <Partners></Partners>
     </div>
   );
 };
