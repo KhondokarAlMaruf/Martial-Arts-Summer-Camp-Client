@@ -1,4 +1,5 @@
 import ExtraCuricilam from "../../ExtraCuriculam/ExtraCuricilam";
+import FooterBanner from "../../FooterBanner/FooterBanner";
 import HappyStudents from "../../HappyStudents/HappyStudents";
 import MostPopular from "../../MostPopular/MostPopular";
 import Partners from "../../Partners/Partners";
@@ -20,6 +21,7 @@ const Home = () => {
       <ExtraCuricilam></ExtraCuricilam>
       <HappyStudents></HappyStudents>
       <Partners></Partners>
+      <FooterBanner></FooterBanner>
     </div>
   );
 };
