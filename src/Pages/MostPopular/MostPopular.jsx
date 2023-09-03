@@ -3,7 +3,7 @@ import img2 from "../../../src/Images/m-2.jpg";
 import img3 from "../../../src/Images/m-3.jpg";
 const MostPopular = () => {
   return (
-    <div className="m-20">
+    <div className="m-20 border-4 border-[#5c6465] p-10">
       <h3 className="text-5xl text-center mb-7 text-[#5c6465]">
         Most Popular Classes
       </h3>
