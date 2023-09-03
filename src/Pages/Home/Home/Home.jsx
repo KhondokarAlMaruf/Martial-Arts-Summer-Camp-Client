@@ -1,3 +1,4 @@
+import MostPopular from "../../MostPopular/MostPopular";
 import Banner from "../Banner/Banner";
 import TopEnrollClass from "../TopEnrollClass/TopEnrollClass";
 import TopInstructors from "../TopInstructors/TopInstructors";
@@ -9,6 +10,7 @@ const Home = () => {
       <Banner></Banner>
       <TopEnrollClass></TopEnrollClass>
       <TopInstructors></TopInstructors>
+      <MostPopular></MostPopular>
       <WhyAdmit></WhyAdmit>
     </div>
   );
